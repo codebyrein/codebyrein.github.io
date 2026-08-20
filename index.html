@@ -1,30 +1,456 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Glowing Heart</title>
-  <link rel="stylesheet" href="style.css" />
+    <title>THE EXTREMELY UNNECESSARY DECISION MACHINE</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            max-width: 600px;
+            margin: auto;
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #output {
+            margin-top: 25px;
+            padding: 20px;
+            background: #000;
+            border-radius: 10px;
+            min-height: 50px;
+        }
+    </style>
 </head>
+
 <body>
 
-  <canvas id="canvas"></canvas>
+<div class="box">
 
-  <div class="btn-container" id="startBtn">
-    <div class="heart-btn">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-      </svg>
-      <span>tap to install</span>
+    <h1>THE EXTREMELY UNNECESSARY</h1>
+    <h2>DECISION MACHINE</h2>
+
+    <input id="name" placeholder="What's your name?">
+
+    <br>
+
+    <select id="activity">
+        <option value="">What are you doing?</option>
+        <option value="1">Studying</option>
+        <option value="2">Gaming</option>
+        <option value="3">Sleeping</option>
+        <option value="4">Eating</option>
+        <option value="5">Nothing</option>
+    </select>
+
+    <br>
+
+    <button onclick="decide()">MAKE DECISION</button>
+
+    <div id="output">
+        Waiting for your terrible decision...
     </div>
-  </div>
 
-  <div class="message-container" id="message">
-    <div class="small-tag"></div>
-    <div class="main-title">I LOVE CHILDREN</div>
-    <div class="sub-title"></div>
-  </div>
+</div>
 
-  <script src="script.js"></script>
+<script>
+
+function decide() {
+
+    let name = document.getElementById("name").value;
+    let activity = document.getElementById("activity").value;
+
+    let output = "";
+
+    if (name == "") {
+        name = "Mysterious Human";
+    }
+    else {
+        if (name.length < 3) {
+            name = name + "?";
+        }
+        else {
+            if (name.length > 20) {
+                name = name.substring(0, 20);
+            }
+            else {
+                name = name;
+            }
+        }
+    }
+
+    output += "Hello, " + name + "!<br><br>";
+
+    if (activity == "1") {
+
+        let subject = prompt("What subject?");
+
+        if (subject == null) {
+            output += "You escaped the question.";
+        }
+        else {
+
+            subject = subject.toLowerCase();
+
+            if (subject == "math") {
+
+                let hard = prompt("Is it hard? yes/no");
+
+                if (hard == "yes") {
+                    output += "You should probably study.";
+                }
+                else {
+                    if (hard == "no") {
+                        output += "You should STILL study.";
+                    }
+                    else {
+                        output += "Invalid answer. Study anyway.";
+                    }
+                }
+
+            }
+
+            else {
+                if (subject == "science") {
+
+                    output += "Science detected.<br>";
+
+                    let motivation = Math.floor(Math.random() * 10) + 1;
+
+                    if (motivation >= 8) {
+                        output += "You are motivated.";
+                    }
+                    else {
+                        if (motivation >= 5) {
+                            output += "You are somewhat motivated.";
+                        }
+                        else {
+                            if (motivation >= 3) {
+                                output += "You are barely motivated.";
+                            }
+                            else {
+                                output += "Your motivation has left the server.";
+                            }
+                        }
+                    }
+
+                }
+
+                else {
+                    if (subject == "english") {
+                        output += "English detected.";
+                    }
+                    else {
+                        if (subject == "filipino") {
+                            output += "Filipino detected.";
+                        }
+                        else {
+                            output += "Unknown subject detected.";
+
+                            if (Math.random() < 0.5) {
+                                output += "<br>Study anyway.";
+                            }
+                            else {
+                                output += "<br>Definitely study anyway.";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    else if (activity == "2") {
+
+        let game = prompt("What game?");
+
+        if (game == null) {
+            output += "You refused to name the game.";
+        }
+        else {
+
+            game = game.toLowerCase();
+
+            if (game == "roblox") {
+
+                let hours = parseInt(prompt("How many hours have you played today?"));
+
+                if (hours == 0) {
+                    output += "You haven't played yet.";
+                }
+                else {
+                    if (hours < 2) {
+                        output += "That's reasonable.";
+                    }
+                    else {
+                        if (hours < 5) {
+                            output += "That's a lot.";
+                        }
+                        else {
+                            if (hours < 10) {
+                                output += "BRO.";
+                            }
+                            else {
+                                output += "PLEASE TOUCH GRASS.";
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            else {
+
+                if (game == "minecraft") {
+
+                    output += "Blocks.<br>";
+
+                    if (Math.random() < 0.5) {
+                        output += "You should mine.";
+                    }
+                    else {
+                        output += "You should craft.";
+                    }
+
+                }
+
+                else {
+
+                    if (game == "terraria") {
+
+                        output +=
+                            "You have entered the 2D suffering dimension.<br>";
+
+                        let boss = prompt(
+                            "Is a boss nearby? yes/no"
+                        );
+
+                        if (boss == "yes") {
+
+                            output += "RUN.<br>";
+
+                            if (Math.random() < 0.5) {
+                                output += "You survived.";
+                            }
+                            else {
+                                output += "You died.";
+                            }
+
+                        }
+                        else {
+
+                            if (boss == "no") {
+                                output +=
+                                    "Prepare for the boss anyway.";
+                            }
+                            else {
+                                output +=
+                                    "The game doesn't understand you.";
+                            }
+
+                        }
+
+                    }
+
+                    else {
+                        output += "Unknown game.<br>";
+
+                        if (Math.random() < 0.5) {
+                            output += "Play something.";
+                        }
+                        else {
+                            output += "Play something else.";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    else if (activity == "3") {
+
+        let tired = prompt("Are you actually tired? yes/no");
+
+        if (tired == "yes") {
+
+            output += "You lie down.<br>";
+
+            if (Math.random() < 0.33) {
+                output += "You sleep.";
+            }
+            else {
+                if (Math.random() < 0.5) {
+                    output += "You check your phone first.";
+                }
+                else {
+                    output += "You stare at the ceiling.";
+                }
+            }
+
+        }
+
+        else {
+
+            if (tired == "no") {
+                output += "Then why are you trying to sleep?";
+            }
+            else {
+                output += "I don't know what that means.";
+            }
+
+        }
+    }
+
+    else if (activity == "4") {
+
+        let food = prompt("What are you eating?");
+
+        if (food == null) {
+            output += "You are apparently eating nothing.";
+        }
+        else {
+
+            food = food.toLowerCase();
+
+            if (food == "rice") {
+
+                output += "Rice detected.<br>";
+
+                if (Math.random() < 0.5) {
+                    output += "Add something to it.";
+                }
+                else {
+                    output += "Eat the rice.";
+                }
+
+            }
+
+            else {
+
+                if (food == "noodles") {
+
+                    output += "Noodles detected.<br>";
+
+                    let spicy = prompt(
+                        "Is it spicy? yes/no"
+                    );
+
+                    if (spicy == "yes") {
+                        output += "Drink water.";
+                    }
+                    else {
+                        if (spicy == "no") {
+                            output += "Continue eating.";
+                        }
+                        else {
+                            output += "Unknown noodle properties.";
+                        }
+                    }
+
+                }
+
+                else {
+
+                    if (food == "chicken") {
+                        output += "Chicken detected.";
+                    }
+                    else {
+                        if (food == "bread") {
+                            output += "Bread detected.";
+                        }
+                        else {
+                            output += "Food detected.";
+
+                            if (Math.random() < 0.5) {
+                                output += "<br>Good food.";
+                            }
+                            else {
+                                output += "<br>Probably food.";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    else if (activity == "5") {
+
+        output += "You are doing nothing.<br>";
+
+        let choice = prompt(
+            "Do you want to continue doing nothing? yes/no"
+        );
+
+        if (choice == "yes") {
+            output += "Excellent.";
+        }
+        else {
+            if (choice == "no") {
+                output += "Then do something.";
+            }
+            else {
+                output += "You have chosen confusion.";
+            }
+        }
+    }
+
+    else {
+
+        output += "Invalid activity.<br>";
+
+        if (Math.random() < 0.33) {
+            output += "Try again.";
+        }
+        else {
+            if (Math.random() < 0.5) {
+                output += "Maybe read the menu next time.";
+            }
+            else {
+                output += "The computer is disappointed.";
+            }
+        }
+    }
+
+    output += "<br><br>================================<br>";
+
+    if (Math.random() < 0.1) {
+        output +=
+            "SECRET ENDING: You have achieved absolutely nothing.";
+    }
+    else {
+        if (Math.random() < 0.5) {
+            output +=
+                "Thank you for using this terrible program.";
+        }
+        else {
+            output +=
+                "Program successfully wasted your time.";
+        }
+    }
+
+    document.getElementById("output").innerHTML = output;
+}
+
+</script>
+
 </body>
 </html>
